@@ -1,0 +1,22 @@
+{
+	"private": true,
+	"name": "SensitiveCMS",
+	"author": "SimpleCode",
+	"license": "GPL-2.1",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/smaker/sensitivecms.git"
+	},
+	"bugs": {
+		"url": "https://github.com/smaker/sensitivecms/issues"
+	},
+	"devDependencies": {
+		"grunt": "^0.4.5",
+		"grunt-phpdocumentator" : "^0.4.1",
+    	"grunt-phplint": "~0.0.3"
+  	},
+  	"main": "Gruntfile.js",
+	"scripts": {
+   		"test": "grunt"
+	}
+}

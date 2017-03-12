@@ -1,0 +1,197 @@
+<!-- Following Menu -->
+<div class="ui large top fixed hidden menu">
+  <div class="ui container">
+	<a class="active item">홈</a>
+	<a class="item">테마</a>
+	<a class="item">
+		<i class="icon puzzle"></i> 플러그인
+	</a>
+	<a class="item">
+		<i class="icon cube"></i> 모듈
+	  </a>
+	<a class="item">소개</a>
+	<a class="item">커뮤니티</a>
+	<div class="right menu">
+	  <div class="item">
+		<a href="/auth/login" class="ui button">로그인</a>
+	  </div>
+	  <div class="item">
+		<a href="/join" class="ui primary button">회원 가입</a>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu">
+	<a href="/" class="active item">홈</a>
+	<a href="/theme" class="item">테마</a>
+	<a href="/plugin" class="item">플러그인</a>
+	<a href="/module" class="item">모듈</a>
+	<a href="/about" class="item">소개</a>
+	<a href="/forum" class="item">커뮤니티</a>
+</div>
+
+{{ -- Page Contents -- }}
+<div class="pusher">
+	<div class="ui inverted vertical masthead center aligned segment">
+		<div class="ui container">
+			   <div id="GNB" class="ui large secondary inverted pointing menu">
+				   <a class="toc item">
+					   <i class="sidebar icon"></i>
+				</a>
+				<a href="/" class="item">
+					<img src="/assets/core/img/sensitivecms_dark.png" alt="SensitiveCMS" width="120" class="ui">
+				</a>
+				<a href="/" class="active item">
+					홈
+				</a>
+				<a href="/theme" class="item">테마</a>
+				<a href="/plugin" class="item">플러그인</a>
+				  <a href="/module" class="item">모듈</a>
+				<a href="/about" class="item">소개</a>
+				<div class="ui dropdown item">
+					<a href="/forum">커뮤니티</a> <i class="dropdown icon"></i>
+					<div class="menu">
+						<a href="/forum" class="item">사용자 포럼</a>
+						<a href="/qna" class="item">묻고답하기</a>
+						<a href="/request" class="item">사용자 팁</a>
+						<a href="/request" class="item">제작 의뢰</a>
+						<a href="/job" class="item">구인/구직</a>
+						<a href="/contact" class="item">공식사이트 이용 문의</a>
+					</div>
+				</div>
+				<div class="right item">
+					 {{ @if (\Module\Member\Model::isLogged()) }}
+						 <a href="/@{{ \Module\Member\Model::getLoggedMember()->getUserID() }}">
+							 <img src="{{ url('/assets/core/img/default_profile.png') }}" class="profile">
+							 <span class="displayName">{{ \Module\Member\Model::getLoggedMember()->getNickName() }}</span>
+						 </a>
+						 <a href="/auth/logout" class="ui inverted button">로그아웃</a>
+						 {{ @if (\Module\Member\Model::getLoggedMember()->isAdmin()) }}
+							 <a href="{{ url('admin') }}" class="ui inverted button">관리</a>
+						 {{ @endif }}
+					 {{ @else }}
+					  <a href="/auth/login" class="ui inverted button">로그인</a>
+					  <a href="/join" class="ui inverted button">회원 가입</a>
+					  {{ @endif }}
+				</div>
+			  </div>
+		</div>
+		<div class="ui text container">
+			  <h1 class="ui inverted header">
+				SensitiveCMS
+			  </h1>
+			  <h2>손쉽고 빠르게 나만의 사이트를 만들 수 있습니다.</h2>
+			 <a href="/getted-started" class="ui huge primary button">지금 시작하기 <i class="right arrow icon"></i></a>
+		 </div>
+	</div>
+
+  <div class="ui vertical stripe segment">
+	  <div class="ui container">{{ $contents }}</div>
+  </div>
+
+
+	<div class="ui inverted vertical footer segment">
+		<div class="ui container">
+			   <div class="ui stackable inverted divided equal height stackable grid">
+				   <div class="three wide column">
+					   <h4 class="ui inverted header">테마</h4>
+					<div class="ui inverted link list">
+						<a href="/store/category/theme" class="item">전체 (1,234)</a>
+						<a href="/store/category/theme/site" class="item">사이트 테마 (500)</a>
+						<a href="/store/category/theme/module" class="item">모듈 테마 (500)</a>
+						<a href="/store/category/theme/plugin" class="item">플러그인 테마 (234)</a>
+					</div>
+				</div>
+				   <div class="three wide column">
+					   <h4 class="ui inverted header">모듈</h4>
+					<div class="ui inverted link list">
+						<a href="/store/category/module" class="item">전체 (1,234)</a>
+						<a href="/store/category/module/social" class="item">소셜</a>
+						<a href="/store/category/module/utility" class="item">유틸리티</a>
+						<a href="/store/category/module/etc" class="item">기타</a>
+					</div>
+				</div>
+				   <div class="three wide column">
+					   <h4 class="ui inverted header">플러그인</h4>
+					<div class="ui inverted link list">
+						<a href="/store/category/plugin" class="item">전체 (534)</a>
+						<a href="/store/category/plugin/social" class="item">소셜 (100)</a>
+						<a href="/store/category/plugin/utility" class="item">유틸리티 (180)</a>
+						<a href="/store/category/plugin/accessory" class="item">액세서리 (80)</a>
+						<a href="/store/category/plugin/etc" class="item">생활/잡화 (174)</a>
+					</div>
+				</div>
+				<div class="three wide column">
+					<h4 class="ui inverted header">개발자</h4>
+					<div class="ui inverted link list">
+						<a href="http://docs.sensitivecms.com" class="item">개발자 문서</a>
+						   <a href="http://docs.sensitivecms.com" class="item">API 레퍼런스</a>
+						   <a href="#" class="item">개발자 자료실</a>
+						<a href="https://github.com/smaker/sensitivecms" target="_blank" class="item">Github</a>
+					</div>
+				</div>
+				   <div class="three wide column">
+					   <h4 class="ui inverted header">소개</h4>
+					<div class="ui inverted link list">
+						<a href="/store/category/plugin" class="item">소개</a>
+						<a href="/store/category/plugin/site" class="item">모듈 1</a>
+						<a href="/store/category/plugin/accessory" class="item">액세서리</a>
+						<a href="/store/category/plugin/plugin" class="item">테마 (234)</a>
+					</div>
+				</div>
+			</div>
+			   <div class="ui stackable inverted divided equal height stackable grid">
+				   <div class="three wide column">
+					   <h4 class="ui inverted header">커뮤니티</h4>
+					<div class="ui inverted link list">
+						<a href="/forum" class="item">사용자 포럼</a>
+						<a href="/qna" class="item">묻고답하기</a>
+						<a href="/request" class="item">사용지 팁</a>
+						<a href="/request" class="item">제작 의뢰</a>
+						<a href="/job" class="item">구인/구직</a>
+						<a href="/contact" class="item">공식사이트 이용 문의</a>
+					</div>
+				</div>
+			</div>
+			   <div class="ui stackable inverted divided equal height stackable grid">
+		<div class="seven wide column">
+		  <p>Copyright &copy; CimpleSoft. All Rights Reserved.</p>
+		</div>
+			</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+
+  <script>
+  $(document)
+	.ready(function() {
+	  $('#GNB .item.dropdown').dropdown({
+		  on: 'hover'
+	  });
+
+	  // fix menu when passed
+	  $('.masthead')
+		.visibility({
+		  once: false,
+		  onBottomPassed: function() {
+			$('.fixed.menu').transition('fade in');
+		  },
+		  onBottomPassedReverse: function() {
+			$('.fixed.menu').transition('fade out');
+		  }
+		})
+	  ;
+
+	  // create sidebar and attach to menu open
+	  $('.ui.sidebar')
+		.sidebar('attach events', '.toc.item')
+	  ;
+
+	})
+  ;
+  </script>

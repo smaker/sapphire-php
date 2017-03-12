@@ -1,0 +1,17 @@
+{
+	"private": "true",
+	"name": "SensitiveCMS Default Site Theme",
+	"version": "1.0.0",
+	"description": "SensitiveCMS Default Site Theme",
+	"author": "SimpleCode",
+	"license": "GPLv2",
+	"themeInfo" : {
+		"title": {
+			"ko" : "SensitiveCMS 기본 사이트 테마",
+			"en" : "SensitiveCMS Default Website Theme"
+		},
+		"description": {
+			"ko" : "SensitiveCMS의 기본 사이트 테마입니다. 메인형 테마와 서브형 테마를 제공합니다."
+		}
+	}
+}
