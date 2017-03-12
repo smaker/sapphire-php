@@ -1,0 +1,7 @@
+.responsive-table {
+	width : 100%;
+	overflow-x: auto;
+}
+.responsive-table > table {
+	width: 100%;
+}

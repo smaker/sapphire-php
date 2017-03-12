@@ -1,0 +1,60 @@
+.visible+.pusher {
+	width:calc(100% - 260px);
+}
+
+.sidebar > .item.hasChild > .menu {
+	display: none;
+}
+
+.sidebar > .item.hasChild {
+	padding: 0 !important;	
+}
+
+
+.sidebar > .item.hasChild.open {
+	padding: 0 0 .5em !important;
+}
+
+.sidebar > .item.hasChild.open > .menu {
+	display: block;
+}
+
+
+.sidebar > .item.hasChild > a {
+	padding: .92857143em 1.14285714em;
+	display: block;
+}
+
+.sidebar > .item.hasChild > .icon {
+	position: absolute;
+	top: .92857143em;
+	right: 1.14285714em;
+}
+
+.sidebar > .item.hasChild > .menu {
+	margin: 0 !important;
+	width: 100%;
+}
+
+.sidebar > .item.hasChild > .menu .item {
+	padding: .5em 1.33333333em;
+}
+
+.overflowAuto
+{
+	overflow: auto;
+}
+
+.ui.checkbox input[type=checkbox]:disabled+.box:before,
+.ui.checkbox input[type=checkbox]:disabled+label:before {
+	cursor: not-allowed;
+}
+
+/* Language */
+#language {
+	margin-right: 12px;
+}
+
+#language > .text {
+	margin-top: 9px;
+}

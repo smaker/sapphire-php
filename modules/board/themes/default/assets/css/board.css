@@ -1,0 +1,9 @@
+/* Board Read */
+
+.boardRead .info .author {
+	float: left;
+}
+
+.boardRead .info .date {
+	float: right;
+}
