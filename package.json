@@ -5,10 +5,10 @@
 	"license": "GPL-2.1",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/smaker/sensitivecms.git"
+		"url": "git://github.com/smaker/sapphire-php.git"
 	},
 	"bugs": {
-		"url": "https://github.com/smaker/sensitivecms/issues"
+		"url": "https://github.com/smaker/sapphire-php/issues"
 	},
 	"devDependencies": {
 		"grunt": "^0.4.5",
