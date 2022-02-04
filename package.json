@@ -1,14 +1,14 @@
 {
 	"private": true,
-	"name": "Sapphire PHP",
+	"name": "simplecms",
 	"author": "SimpleCode",
 	"license": "GPL-2.1",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/smaker/sapphire-php.git"
+		"url": "git://github.com/smaker/simplecms.git"
 	},
 	"bugs": {
-		"url": "https://github.com/smaker/sapphire-php/issues"
+		"url": "https://github.com/smaker/simplecms/issues"
 	},
 	"devDependencies": {
 		"grunt": "^0.4.5",
