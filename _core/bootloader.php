@@ -28,89 +28,92 @@ class bootloader
 		require __DIR__ . '/system/autoload.php';
 		require __DIR__ . '/system/functions.php';
 
-		// 아직 설치하지 않았다면
+		// 아직 설치하지 않았다면 설치 페이지로 이동시킨다
 		if(!self::isInstalled() && substr(REQUEST_URL, 0, 15) != '_core/_install/')
 		{
-			// 설치 페이지로 이동한다
 			header('Location: ' . BASEURL . '_core/_install/');
 			exit;
 		}
+
+		// 세션을 시작한다
+		session_start();
 
 		// error handle을 bootloader에서 하도록 한다
 		set_error_handler('bootloader::errorHandler');
 		// exception handle을 bootloader에서 하도록 한다
 		set_exception_handler('bootloader::exceptionHandler');
 
-		$dbInfo = config('database');
-
-		Database::connect($dbInfo['hostname'], $dbInfo['username'], $dbInfo['password'], $dbInfo['database'], $dbInfo['port']);
-
-		self::$currentSiteInfo = Site::findSite($_SERVER['HTTP_HOST'], REQUEST_URL);
-		if(self::$currentSiteInfo === NULL)
+		if(self::isInstalled())
 		{
-			self::$currentSiteInfo = Site::getDefaultSite();
+			$dbInfo = config('database');
+
+			Database::connect($dbInfo['hostname'], $dbInfo['username'], $dbInfo['password'], $dbInfo['database'], $dbInfo['port']);
+
+			self::$currentSiteInfo = Site::findSite($_SERVER['HTTP_HOST'], REQUEST_URL);
 			if(self::$currentSiteInfo === NULL)
 			{
-				header('HTTP/1.1 404 Not Found');
-				Response::notFound();
+				self::$currentSiteInfo = Site::getDefaultSite();
+				if(self::$currentSiteInfo === NULL)
+				{
+					header('HTTP/1.1 404 Not Found');
+					Response::notFound();
+					exit();
+				}
+			}
+
+			// 라우터를 초기화한다
+			Router::init();
+
+
+			$path = Uri::getCurrentUri();
+			if($path)
+			{
+				foreach(scandir(MODULEDIR) as $file)
+				{
+					if ($file != '.' && $file != '..' && is_dir(MODULEDIR.'/'.$file))
+					{
+						module($file);
+					}
+				}
+	
+				$route = Router::findRoute();
+				if($route)
+				{
+					if($route == 'fuck')
+					{
+						Response::error('요청하신 페이지는 아직 개발중인 페이지입니다.');
+					}
+					else
+					{
+						$route();
+					}
+				}
+	
+				if($route === FALSE)
+				{
+					header('HTTP/1.1 404 Not Found');
+					Response::notFound();
+					exit;
+				}
+			}
+			else
+			{
+				// 기본 페이지로 이동
+				$db = \Core\Database::getConnection();
+				$result = $db->query('SELECT * FROM `st_instances` WHERE `isDefault` = "Y"');
+				$obj = $result->fetch_object();
+	
+				header('HTTP/1.0 301 Moved Permanently');
+				header('Location: ' . BASEURL . $obj->id);
 				exit();
 			}
-		}
 
-		// 라우터를 초기화한다
-		Router::init();
-
-		// 세션을 시작한다
-		session_start();
-
-		// 기본 FrontEnd 구성요소를 불러들인다
-		Frontend::addCss('/assets/css/sensitive.css');
-		Frontend::addCss('/common/css/semantic.min.css');
-		Frontend::addJs('/common/js/jquery-1.12.0.min.js');
-		Frontend::addJs('/common/js/semantic.min.js');
-		Frontend::addJs('/assets/js/sensitive.js');
-
-		$path = Uri::getCurrentUri();
-		if($path)
-		{
-			foreach(scandir(MODULEDIR) as $file)
-			{
-				if ($file != '.' && $file != '..' && is_dir(MODULEDIR.'/'.$file))
-				{
-					module($file);
-				}
-			}
-
-			$route = Router::findRoute();
-			if($route)
-			{
-				if($route == 'fuck')
-				{
-					Response::error('요청하신 페이지는 아직 개발중인 페이지입니다.');
-				}
-				else
-				{
-					$route();
-				}
-			}
-
-			if($route === FALSE)
-			{
-				header('HTTP/1.1 404 Not Found');
-				Response::notFound();
-				exit;
-			}
-		}
-		else
-		{
-			// 기본 페이지로 이동
-			$db = \Core\Database::getConnection();
-			$result = $db->query('SELECT * FROM `st_instances` WHERE `isDefault` = "Y"');
-			$obj = $result->fetch_object();
-
-			header('HTTP/1.0 301 Moved Permanently');
-			header('Location: ' . BASEURL . $obj->id);
-			exit();
+			// 기본 FrontEnd 구성요소를 불러들인다
+			Frontend::addCss('/assets/css/sensitive.css');
+			Frontend::addCss('/common/css/semantic.min.css');
+			Frontend::addJs('/common/js/jquery-1.12.0.min.js');
+			Frontend::addJs('/common/js/semantic.min.js');
+			Frontend::addJs('/assets/js/sensitive.js');
 		}
 	}
 
