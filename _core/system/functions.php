@@ -171,7 +171,7 @@ function convertDateFormat($date, $toFormat = 'Y-m-d')
  */
 function url($url)
 {
-	if($url{0} == '/')
+	if($url[0] == '/')
 	{
 		$url = substr($url, 1);
 	}

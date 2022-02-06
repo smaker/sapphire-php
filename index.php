@@ -5,6 +5,9 @@
  * @link https://simplesoftcorp.com
  */
 
+// 모든 오류를 출력한다
+error_reporting(E_ALL);
+
 // PHP 버전을 확인하고, 이를 만족하지 못하면 실행을 중단한다.
 if(version_compare(PHP_VERSION, '7.4.0', '<'))
 {
