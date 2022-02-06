@@ -29,11 +29,6 @@ class Base
 		$this->db = \Core\Database::getConnection();
 	}
 
-	public function __destruct()
-	{
-		unset($this);
-	}
-
 	public function setModule($module)
 	{
 		$this->module = $module->type;
