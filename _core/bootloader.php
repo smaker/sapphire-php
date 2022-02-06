@@ -29,9 +29,9 @@ class bootloader
 		require __DIR__ . '/system/functions.php';
 
 		// 아직 설치하지 않았다면 설치 페이지로 이동시킨다
-		if(!self::isInstalled() && substr(REQUEST_URL, 0, 15) != '_core/_install/')
+		if(!self::isInstalled() && substr(REQUEST_URL, 0, 15) != 'installer/')
 		{
-			header('Location: ' . BASEURL . '_core/_install/');
+			header('Location: ' . BASEURL . 'installer/');
 			exit;
 		}
 
