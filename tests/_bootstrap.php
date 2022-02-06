@@ -9,4 +9,4 @@ $_SERVER['SCRIPT_FILENAME'] = dirname(__DIR__) . '/index.php';
 $_SERVER['SCRIPT_NAME'] = '/simplecms/index.php';
 $_SERVER['REQUEST_URI'] = '/simplecms/index.php';
 
-require dirname(__FILE__) . '/_core/bootloader.php';
+require dirname(__FILE__) . '/../_core/bootloader.php';
