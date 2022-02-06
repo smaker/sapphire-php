@@ -12,11 +12,14 @@
 	},
 	"devDependencies": {
 		"grunt": ">=1.3.0",
-		"grunt-phpdocumentator" : "^0.4.1",
-    	"grunt-phplint": "~0.0.3"
-  	},
-  	"main": "Gruntfile.js",
+		"grunt-phpdocumentator": "^0.4.1",
+		"grunt-phplint": "~0.0.3"
+	},
+	"main": "Gruntfile.js",
 	"scripts": {
-   		"test": "grunt"
+		"test": "grunt"
+	},
+	"dependencies": {
+		"tailwindcss": "^3.0.18"
 	}
 }
