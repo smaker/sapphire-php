@@ -23,8 +23,7 @@ jobs:
     - name: PHP Lint
       run: if find . -name "*.php" ! -path "./vendor/*" -print0 | xargs -0 -n 1 -P 8 php -l | grep -v "No syntax errors detected"; then exit 1; fi
     
-    - name: Download codeception (PHP 7.2 and above)
-      if: matrix.php >= '7.2'
+    - name: Download codeception
       run: wget https://codeception.com/codecept.phar
     
     - name: Run PHP development server
