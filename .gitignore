@@ -1,7 +1,6 @@
 .DS_Store
 Thumbs.db
 composer.lock
-/vendor
 /files/
 /node_modules/
 
@@ -9,4 +8,4 @@ composer.lock
 *.sublime-workspace
 *.sublime-project
 .codeintel
-
+error_log
