@@ -13,10 +13,6 @@ error_reporting(E_ALL);
 date_default_timezone_set(@date_default_timezone_get());
 
 /**
- * 설치 경로
- */
-define('BASEDIR', str_replace('\\', '/', dirname(__DIR__)) . '/');
-/**
  * 코어 디렉토리
  */
 define('COREDIR', BASEDIR . '_core/');
