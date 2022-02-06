@@ -2,9 +2,13 @@
 
 function config($config_item = 'global')
 {
-	$config = require BASEDIR . 'files/config/' . $config_item . '.php';
+	if(file_exists(BASEDIR . '/files/config/' . $config_item . '.php'))
+	{
+		$config = require BASEDIR . '/files/config/' . $config_item . '.php';
+		return $config;
+	}
 
-	return $config;
+	return;
 }
 
 function escape($str)

@@ -1,7 +1,7 @@
 <?php
 
 // 설치 경로
-define('BASEDIR', dirname(__DIR__ . '/../../'));
+define('BASEDIR', realpath(__DIR__ . '/../../'));
 
 // 모듈 디렉토리
 define('MODULEDIR', BASEDIR . 'modules/');
@@ -23,6 +23,7 @@ else
 	define('BASEURL', '/');
 }
 
+//print_r($_SERVER);
 if (isset($_SERVER['REQUEST_URI']))
 {
 	define('REQUEST_URL', BASEURL === '/' ? substr($_SERVER['REQUEST_URI'], 1) : (substr($_SERVER['REQUEST_URI'], strlen(BASEURL)) ?: ''));

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SensitiveCMS를 실행시키기 위한 파일
+ * simplecms를 실행시키기 위한 파일
  */
 use Core\Database;
 use Core\Site;
@@ -21,15 +21,12 @@ class bootloader
 	 */
 	public static function init()
 	{
-		// 모든 오류를 출력한다
-		error_reporting(E_ALL);
-
 		// timezone이 설정되지 않은 경우, 서버 환경에 맞는 timezone으로 설정해준다
 		date_default_timezone_set(@date_default_timezone_get());
 
-		require dirname(__FILE__) . '/system/constants.php';
-		require dirname(__FILE__) . '/system/autoload.php';
-		require dirname(__FILE__) . '/system/functions.php';
+		require __DIR__ . '/system/constants.php';
+		require __DIR__ . '/system/autoload.php';
+		require __DIR__ . '/system/functions.php';
 
 		// 아직 설치하지 않았다면
 		if(!self::isInstalled() && substr(REQUEST_URL, 0, 15) != '_core/_install/')
@@ -125,13 +122,13 @@ class bootloader
 	public static function isInstalled()
 	{
 		// config 파일이 없다면 false
-		if(!file_exists(COREDIR . 'system/config.php'))
+		if(!file_exists(__DIR__ . '/system/config.php'))
 		{
 			return FALSE;
 		}
 
 		// db 설정 파일이 없다면 false
-		if(!file_exists(BASEDIR . 'files/config/database.php'))
+		if(!file_exists(__DIR__ . '/../files/config/database.php'))
 		{
 			return FALSE;
 		}
