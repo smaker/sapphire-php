@@ -20,5 +20,12 @@ if(version_compare(PHP_VERSION, '7.4.0', '<'))
 // 설치 경로
 define('BASEDIR', __DIR__ . '/');
 
+// 모듈 디렉토리
+define('MODULEDIR', BASEDIR . 'modules/');
+// 플러그인 디렉토리
+define('PLUGINDIR', BASEDIR . 'plugins/');
+// 테마 디렉토리
+define('THEMEDIR', BASEDIR . 'themes/');
+
 // 부트엔진 로드
 require dirname(__FILE__) . '/_core/bootloader.php';

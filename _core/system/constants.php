@@ -1,18 +1,5 @@
 <?php
 
-/**
- * 자주 사용되는 상수를 초기화합니다
- */
-
-// 코어 디렉토리
-define('COREDIR', BASEDIR . '_core/');
-// 모듈 디렉토리
-define('MODULEDIR', BASEDIR . 'modules/');
-// 플러그인 디렉토리
-define('PLUGINDIR', BASEDIR . 'plugins/');
-// 테마 디렉토리
-define('THEMEDIR', BASEDIR . 'themes/');
-
 if (isset($_SERVER['DOCUMENT_ROOT']) && !strncmp(BASEDIR,  str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']), strlen($_SERVER['DOCUMENT_ROOT'])))
 {
 	define('BASEURL', rtrim(substr(BASEDIR, strlen($_SERVER['DOCUMENT_ROOT'])), '/') . '/');
