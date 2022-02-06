@@ -32,7 +32,7 @@ class Validator
 				return FALSE;
 			}
 			
-			if(isset($rule['length'] && !empty($rule['length'])))
+			if(isset($rule['length']) && !empty($rule['length']))
 			{
 				if(strpos($rule['length'], ':') === FALSE)
 				{
