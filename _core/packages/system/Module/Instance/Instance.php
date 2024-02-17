@@ -64,9 +64,14 @@ class Handler
 	 * @todo 성공 여부에 따라 boolean으로 return하는 것이 좋을듯하다
 	 * @return void
 	 */
-	public static function putConfig($instanceId, $section = 'default', $config)
+	public static function putConfig($instanceId, string $section, mixed $config)
 	{
 		$db = DB::getConnection();
+
+        if(empty($section))
+        {
+            $section = 'default';
+        }
 
 		if(self::isConfigExists($instanceId, $section))
 		{
